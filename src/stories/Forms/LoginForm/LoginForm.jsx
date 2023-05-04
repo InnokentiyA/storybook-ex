@@ -52,10 +52,10 @@ export const LoginForm = ({ onLogin }) => {
         Login
       </button>
       {showMessage && (
-        <div
+        <div data-testid="message"
           className={`login-form__${isSuccess ? "success" : "error"}-message`}
         >
-          {isSuccess ? "Welcome, email@example.com!" : "Failure, try again!"}
+          {isSuccess ? "Welcome, email@example.com!" : "Login failed. Please check your credentials and try again."}
         </div>
       )}
     </form>

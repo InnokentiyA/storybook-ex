@@ -14,12 +14,13 @@ export default {
 };
 export const LoginFormDefault = {};
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
-export const LoginPositiveForm = {
+export const SuccessfulLogin = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
+    const email = "email@example.com";
 
     // Simulate interactions with the component
-    await userEvent.type(canvas.getByTestId("username"), "firstname", {
+    await userEvent.type(canvas.getByTestId("username"), email, {
       delay: 100,
     });
 
@@ -30,14 +31,15 @@ export const LoginPositiveForm = {
     await userEvent.click(canvas.getByRole("button"));
 
     // Assert DOM structure
+    const message = canvas.getByTestId("message");
 
-    await expect(
-      canvas.getByText("Welcome, email@example.com!")
-    ).toBeInTheDocument();
+    await expect(message).toBeInTheDocument();
+    await expect(message).toHaveTextContent(`Welcome, ${email}!`);
+    await expect(message).toHaveStyle("color: rgb(0, 128, 0);");
   },
 };
 
-export const LoginNegativeForm = {
+export const LoginWithEmptyUsername = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
@@ -50,7 +52,56 @@ export const LoginNegativeForm = {
     await userEvent.click(canvas.getByRole("button"));
 
     // Assert DOM structure
+    const message = canvas.getByTestId("message");
 
-    await expect(canvas.getByText("Failure, try again!")).toBeInTheDocument();
+    await expect(message).toBeInTheDocument();
+    await expect(message).toHaveTextContent("Login failed. Please check your credentials and try again.");
+    await expect(message).toHaveStyle("color: rgb(255, 0, 0);");
+  },
+};
+
+export const LoginWithEmptyPassword = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const email = "email@example.com";
+
+    // Simulate interactions with the component
+
+    await userEvent.type(canvas.getByTestId("username"), email, {
+      delay: 100,
+    });
+
+    await userEvent.click(canvas.getByRole("button"));
+
+    // Assert DOM structure
+    const message = canvas.getByTestId("message");
+
+    await expect(message).toBeInTheDocument();
+    await expect(message).toHaveTextContent("Login failed. Please check your credentials and try again.");
+    await expect(message).toHaveStyle("color: rgb(255, 0, 0);");
+  },
+};
+
+export const ExampleLoginWithBug = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const email = "email@example.com";
+
+    // Simulate interactions with the component
+    await userEvent.type(canvas.getByTestId("username"), email, {
+      delay: 100,
+    });
+
+    await userEvent.type(canvas.getByTestId("password"), "a-random-password", {
+      delay: 100,
+    });
+
+    await userEvent.click(canvas.getByRole("button"));
+
+    // Assert DOM structure
+    const message = canvas.getByTestId("message");
+
+    await expect(message).toBeInTheDocument();
+    await expect(message).toHaveStyle("color: rgb(255, 0, 0);");
   },
 };
