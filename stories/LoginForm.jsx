@@ -5,15 +5,18 @@ import "./login-form.css";
 export const LoginForm = ({ onLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [showSuccess, setShowSuccess] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleLogin = (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
     if (username && password) {
-      setShowSuccess(true);
+      setShowMessage(true);
+      setIsSuccess(true);
       onLogin(username);
     } else {
-      setShowSuccess(false);
+      setShowMessage(true);
+      setIsSuccess(false);
     }
   };
 
@@ -48,12 +51,12 @@ export const LoginForm = ({ onLogin }) => {
       >
         Login
       </button>
-      {showSuccess ? (
-        <div className="login-form__success-message">
-          Welcome, email@example.com!
+      {showMessage && (
+        <div
+          className={`login-form__${isSuccess ? "success" : "error"}-message`}
+        >
+          {isSuccess ? "Welcome, email@example.com!" : "Failure, try again!"}
         </div>
-      ) : (
-        <div className="login-form__error-message">Failure, try again!</div>
       )}
     </form>
   );
