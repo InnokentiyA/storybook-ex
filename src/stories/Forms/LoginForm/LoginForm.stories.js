@@ -4,12 +4,13 @@ import { LoginForm } from "./LoginForm";
 import { expect } from "@storybook/jest";
 
 export default {
-  title: "Example/LoginForm",
+  title: "Interactions/Forms/LoginForm",
   component: LoginForm,
   parameters: {
     // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout
     layout: "fullscreen",
   },
+ // tags: ["autodocs"],
 };
 export const LoginFormDefault = {};
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
