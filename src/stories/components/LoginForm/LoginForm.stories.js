@@ -1,5 +1,5 @@
 import { within, userEvent } from "@storybook/testing-library";
-import { setupApiMock } from "./mockEndpoint/GetUsers";
+import {setupApiMock, setupNegativeLoginMock, setupPositiveLoginMock} from "./mockEndpoint/GetUsers";
 
 import { LoginForm } from "./LoginForm";
 import { expect } from "@storybook/jest";
@@ -20,6 +20,7 @@ export const SuccessfulLogin = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const email = "email@example.com";
+    setupPositiveLoginMock();
 
     // Simulate interactions with the component
     await userEvent.type(canvas.getByTestId("username"), email, {
@@ -44,10 +45,12 @@ export const SuccessfulLogin = {
 export const LoginWithEmptyUsername = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
+    const password = "a-random-password";
+    setupNegativeLoginMock();
 
     // Simulate interactions with the component
 
-    await userEvent.type(canvas.getByTestId("password"), "a-random-password", {
+    await userEvent.type(canvas.getByTestId("password"), password, {
       delay: 100,
     });
 
@@ -68,6 +71,7 @@ export const LoginWithEmptyPassword = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const email = "email@example.com";
+    setupNegativeLoginMock();
 
     // Simulate interactions with the component
 
@@ -111,7 +115,7 @@ export const ExampleLoginWithBug = {
     await expect(message).toHaveStyle("color: rgb(255, 0, 0);");
   },
 };
-export const ExampleApi = () => {
+export const ExampleApiMock = () => {
   setupApiMock();
   const expectedResponse = [
     { id: 1, name: 'Alice' },

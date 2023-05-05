@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./login-form.css";
-import {setupNegativeLoginMock, setupPositiveLoginMock} from "./mockEndpoint/GetUsers";
 import axios from "axios";
 
 export const LoginForm = ({ onLogin }) => {
@@ -13,7 +12,6 @@ export const LoginForm = ({ onLogin }) => {
   const handleLogin = (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
     if (username && password) {
-      setupPositiveLoginMock();
       axios.get("/api/auth").then((response) => {
         console.log(response.data);
       });
@@ -21,7 +19,6 @@ export const LoginForm = ({ onLogin }) => {
       setIsSuccess(true);
       onLogin(username);
     } else {
-      setupNegativeLoginMock();
       axios.get("/api/auth").then((response) => {
         console.log(response.data);
       });
