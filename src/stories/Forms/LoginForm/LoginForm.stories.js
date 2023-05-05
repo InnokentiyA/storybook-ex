@@ -1,9 +1,9 @@
 import { within, userEvent } from "@storybook/testing-library";
-import { setupApiMock } from './mockEndpoint/GetUsers';
+import { setupApiMock } from "./mockEndpoint/GetUsers";
 
 import { LoginForm } from "./LoginForm";
 import { expect } from "@storybook/jest";
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   title: "Interactions/Forms/LoginForm",
@@ -12,7 +12,7 @@ export default {
     // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout
     layout: "fullscreen",
   },
- // tags: ["autodocs"],
+  // tags: ["autodocs"],
 };
 export const LoginFormDefault = {};
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
@@ -57,7 +57,9 @@ export const LoginWithEmptyUsername = {
     const message = canvas.getByTestId("message");
 
     await expect(message).toBeInTheDocument();
-    await expect(message).toHaveTextContent("Login failed. Please check your credentials and try again.");
+    await expect(message).toHaveTextContent(
+      "Login failed. Please check your credentials and try again."
+    );
     await expect(message).toHaveStyle("color: rgb(255, 0, 0);");
   },
 };
@@ -79,7 +81,9 @@ export const LoginWithEmptyPassword = {
     const message = canvas.getByTestId("message");
 
     await expect(message).toBeInTheDocument();
-    await expect(message).toHaveTextContent("Login failed. Please check your credentials and try again.");
+    await expect(message).toHaveTextContent(
+      "Login failed. Please check your credentials and try again."
+    );
     await expect(message).toHaveStyle("color: rgb(255, 0, 0);");
   },
 };
@@ -107,20 +111,20 @@ export const ExampleLoginWithBug = {
     // await expect(message).toHaveStyle("color: rgb(255, 0, 0);");
   },
 };
-export const ExampleApi = () => {
-  setupApiMock();
-  const expectedResponse = [
-    { id: 1, name: 'Alice' },
-    { id: 2, name: 'Bob' },
-    { id: 3, name: 'Charlie' },
-  ];
-
-  // Call example API endpoint
-  axios.get('/api/users').then((response) => {
-    console.log(response.data);
-    expect(response.status).toBe(200);
-    expect(response.data).toEqual(expectedResponse);
-  });
-
-  return <div>Check the console for API response</div>;
-};
+// export const ExampleApi = () => {
+//   setupApiMock();
+//   const expectedResponse = [
+//     { id: 1, name: 'Alice' },
+//     { id: 2, name: 'Bob' },
+//     { id: 3, name: 'Charlie' },
+//   ];
+//
+//   // Call example API endpoint
+//   axios.get('/api/users').then((response) => {
+//     console.log(response.data);
+//     expect(response.status).toBe(200);
+//     expect(response.data).toEqual(expectedResponse);
+//   });
+//
+//   return <div>Check the console for API response</div>;
+// };

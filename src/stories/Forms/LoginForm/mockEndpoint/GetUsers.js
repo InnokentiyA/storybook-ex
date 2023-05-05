@@ -18,3 +18,32 @@ export function setupApiMock() {
 
     return mock;
 }
+
+export function setupNegativeLoginMock() {
+    const mock = new MockAdapter(axios);
+
+    // Example API endpoint
+    const endpoint = "/api/auth";
+
+    // Example mock response
+    const mockResponse = { statusCode: 403, msg: "Forbidden" };
+
+    mock.onGet(endpoint).reply(403, mockResponse);
+
+    return mock;
+}
+
+export function setupPositiveLoginMock() {
+    const mock = new MockAdapter(axios);
+
+    // Example API endpoint
+    const endpoint = "/api/auth";
+
+    // Example mock response
+    const mockResponse = { statusCode: 200, msg: "Success" };
+
+    mock.onGet(endpoint).reply(200, mockResponse);
+
+    return mock;
+}
+
