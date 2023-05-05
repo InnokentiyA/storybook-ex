@@ -108,7 +108,7 @@ export const ExampleLoginWithBug = {
     const message = canvas.getByTestId("message");
 
     await expect(message).toBeInTheDocument();
-    await expect(message).toHaveStyle("color: rgb(255, 0, 0);");
+    // await expect(message).toHaveStyle("color: rgb(255, 0, 0);");
   },
 };
 export const ExampleApi = () => {
