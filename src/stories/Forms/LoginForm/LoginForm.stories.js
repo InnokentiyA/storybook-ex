@@ -111,20 +111,20 @@ export const ExampleLoginWithBug = {
     // await expect(message).toHaveStyle("color: rgb(255, 0, 0);");
   },
 };
-// export const ExampleApi = () => {
-//   setupApiMock();
-//   const expectedResponse = [
-//     { id: 1, name: 'Alice' },
-//     { id: 2, name: 'Bob' },
-//     { id: 3, name: 'Charlie' },
-//   ];
-//
-//   // Call example API endpoint
-//   axios.get('/api/users').then((response) => {
-//     console.log(response.data);
-//     expect(response.status).toBe(200);
-//     expect(response.data).toEqual(expectedResponse);
-//   });
-//
-//   return <div>Check the console for API response</div>;
-// };
+export const ExampleApi = () => {
+  setupApiMock();
+  const expectedResponse = [
+    { id: 1, name: 'Alice' },
+    { id: 2, name: 'Bob' },
+    { id: 3, name: 'Charlie' },
+  ];
+
+  // Call example API endpoint
+  axios.get('/api/users').then((response) => {
+    console.log(response.data);
+    expect(response.status).toBe(200);
+    expect(response.data).toEqual(expectedResponse);
+  });
+
+  return <div>Check the console for API response</div>;
+};
