@@ -6,7 +6,7 @@ import { expect } from "@storybook/jest";
 import axios from "axios";
 
 export default {
-  title: "Interactions/Forms/LoginForm",
+  title: "Interactions/components/LoginForm",
   component: LoginForm,
   parameters: {
     // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout
@@ -108,7 +108,7 @@ export const ExampleLoginWithBug = {
     const message = canvas.getByTestId("message");
 
     await expect(message).toBeInTheDocument();
-    // await expect(message).toHaveStyle("color: rgb(255, 0, 0);");
+    await expect(message).toHaveStyle("color: rgb(255, 0, 0);");
   },
 };
 export const ExampleApi = () => {
