@@ -1,7 +1,9 @@
 import { within, userEvent } from "@storybook/testing-library";
+import { setupApiMock } from './mockEndpoint/GetUsers';
 
 import { LoginForm } from "./LoginForm";
 import { expect } from "@storybook/jest";
+import axios from 'axios';
 
 export default {
   title: "Interactions/Forms/LoginForm",
@@ -104,4 +106,14 @@ export const ExampleLoginWithBug = {
     await expect(message).toBeInTheDocument();
     await expect(message).toHaveStyle("color: rgb(255, 0, 0);");
   },
+};
+export const ExampleApi = () => {
+  setupApiMock();
+
+  // Call example API endpoint
+  axios.get('/api/users').then((response) => {
+    console.log(response.data);
+  });
+
+  return <div>Check the console for API response</div>;
 };
