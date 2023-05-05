@@ -6,7 +6,15 @@ const config = {
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
     '@storybook/addon-a11y',
-    '@storybook/addon-coverage',
+    {
+      name: '@storybook/addon-coverage',
+      options: {
+        istanbul: {
+          include: ['**/components/**'],
+          excludeNodeModules: true,
+        },
+      },
+    },
   ],
   framework: {
     name: "@storybook/react-webpack5",
