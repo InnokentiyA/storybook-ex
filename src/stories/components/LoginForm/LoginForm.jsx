@@ -28,11 +28,11 @@ export const LoginForm = ({ onLogin }) => {
   };
 
   return (
-    <form className="login-form" onSubmit={handleLogin}>
+    <form className="login-form" onSubmit={handleLogin} aria-label="Login">
       <label className="login-form__label" htmlFor="username">
         Username:
       </label>
-      <input
+      <input aria-label="username"
         className="login-form__input"
         type="text"
         name="username"
@@ -43,7 +43,7 @@ export const LoginForm = ({ onLogin }) => {
       <label className="login-form__label" htmlFor="password">
         Password:
       </label>
-      <input
+      <input aria-label="password"
         className="login-form__input"
         type="password"
         name="password"

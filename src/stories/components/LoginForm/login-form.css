@@ -26,26 +26,28 @@
     padding: 5px;
     border-radius: 3px;
     border: none;
-    background-color: #2e4e6b;
+    background-color: #083d77;
     color: #fff;
     cursor: pointer;
 }
 
 .login-form__button:hover {
-    background-color: #0069d9;
+    background-color: #257bd7;
 }
 
 .login-form__error {
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 3px;
-    border: 1px solid #dc3545;
+    border: 1px solid red;
     background-color: #f8d7da;
-    color: #721c24;
+    color: #a60808;
 }
 .login-form__success-message {
+    padding-top: 10px;
     color: green;
 }
 .login-form__error-message {
-    color: red;
+    padding-top: 10px;
+    color: #a60808;
 }
