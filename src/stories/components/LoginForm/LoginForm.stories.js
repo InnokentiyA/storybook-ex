@@ -1,5 +1,5 @@
 import { within, userEvent } from "@storybook/testing-library";
-import {setupApiMock, setupPositiveLoginMock} from "./mockEndpoint/GetUsers";
+import {setupApiMock, setupPositiveLoginMock} from "../../mockEndpoint/GetUsers";
 import { LoginForm } from "./LoginForm";
 import { expect } from "@storybook/jest";
 import axios from "axios";
