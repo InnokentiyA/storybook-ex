@@ -1,5 +1,5 @@
 import { within, userEvent } from "@storybook/testing-library";
-import {setupApiMock, setupNegativeLoginMock, setupPositiveLoginMock} from "./mockEndpoint/GetUsers";
+import {setupApiMock, setupPositiveLoginMock} from "./mockEndpoint/GetUsers";
 import { LoginForm } from "./LoginForm";
 import { expect } from "@storybook/jest";
 import axios from "axios";
@@ -11,7 +11,7 @@ export default {
     // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout
     layout: "fullscreen",
   },
-  // tags: ["autodocs"],
+  tags: ["autodocs"],
 };
 export const LoginFormDefault = {};
 // More on interaction testing: https://storybook.js.org/docs/react/writing-tests/interaction-testing
@@ -46,7 +46,6 @@ export const LoginWithEmptyUsername = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const password = "a-random-password";
-    setupNegativeLoginMock();
 
     // Simulate interactions with the component
     await userEvent.type(canvas.getByTestId("password"), password, {
@@ -70,7 +69,6 @@ export const LoginWithEmptyPassword = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const email = "email@example.com";
-    setupNegativeLoginMock();
 
     // Simulate interactions with the component
     await userEvent.type(canvas.getByTestId("username"), email, {

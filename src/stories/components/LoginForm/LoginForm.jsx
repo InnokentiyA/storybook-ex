@@ -19,9 +19,6 @@ export const LoginForm = ({ onLogin }) => {
       setIsSuccess(true);
       onLogin(username);
     } else {
-      axios.get("/api/auth").then((response) => {
-        console.log(response.data);
-      });
       setShowMessage(true);
       setIsSuccess(false);
     }
